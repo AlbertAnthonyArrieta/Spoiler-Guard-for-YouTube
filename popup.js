@@ -1,6 +1,58 @@
-document.getElementById("enable").addEventListener("click", enableExtension);
+document.getElementById("addbtn").addEventListener("click", addWord);
 
-
-function enableExtension() {
-    console.log('ENABLED!');
+function addWord() {
+    let newWord = document.getElementById("inputWord").value;
+    if (newWord) {
+        // Get the words array from storage
+        chrome.storage.local.get(['words'], function(result) {
+            let words = result.words || [];
+            // Add the new word to the words array
+            words.push(newWord);
+            // Save the updated words array to storage
+            chrome.storage.local.set({words: words}, function() {
+                console.log('Word added to storage');
+                // Clear the input field
+                document.getElementById("inputWord").value = '';
+                // Update the wordListContainer
+                displayWords();
+            });
+        });
+    }
 }
+
+function displayWords() {
+    // Get the words array from storage
+    chrome.storage.local.get(['words'], function(result) {
+        console.log(result);
+        if (result.words) {
+            let wordListContainer = document.getElementById("wordListContainer");
+            // Clear the wordListContainer
+            wordListContainer.innerHTML = '';
+            // Create a new div for each word
+            result.words.forEach(function(word, index) {
+                let wordDiv = document.createElement('div');
+                let wordSpan = document.createElement('span');
+                wordSpan.textContent = word;
+
+                // Delete button and functions
+                let deleteButton = document.createElement('button');
+                deleteButton.textContent = ' X  ';
+                deleteButton.addEventListener('click', function() {
+                    result.words.splice(index, 1);
+                    chrome.storage.local.set({words: result.words}, function() {
+                        console.log('Word deleted from storage');
+                        wordListContainer.removeChild(wordDiv);
+                    });
+                });
+                wordDiv.appendChild(deleteButton);
+                wordDiv.appendChild(wordSpan);
+                wordListContainer.appendChild(wordDiv);
+            });
+        }
+    });
+}
+
+// Display the words when the popup is loaded
+displayWords();
+
+//NOTES: delete does not actually delete from storage. It just deletes from the popup.

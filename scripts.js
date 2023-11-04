@@ -1,5 +1,21 @@
-// contentScript.js
-let words = ['the', 'how', 'spider']; // The words to search for
+let words = []; // Initialize the words array
+
+// Load the saved words from storage
+chrome.storage.local.get(['words'], function(result) {
+    if (result.words) {
+        words = result.words;
+    }
+});
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.newWord) {
+      // Add the new word to the words array
+      words.push(request.newWord);
+      console.log("Added new word: " + request.newWord);
+      // Send a response
+      sendResponse({success: true});
+  }
+});
 
 let observer = new MutationObserver(function(mutations) {
   // Select all the video title elements

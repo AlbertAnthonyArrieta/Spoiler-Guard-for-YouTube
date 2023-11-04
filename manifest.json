@@ -10,6 +10,7 @@
         "48": "icons/med.png",
         "128": "icons/lg.png"
     },
+    "permissions": ["storage"],
     "content_scripts": [
         {
             "matches": [
