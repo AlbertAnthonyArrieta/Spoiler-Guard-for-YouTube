@@ -1,13 +1,23 @@
 <html>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
 <body>
     <h1>Spoiler Guard For YouTube</h1>
     <input type="text" id="inputWord" placeholder="Enter Keywords Here..." />
     <button id="addbtn">Add Word</button>
 
-    <h3>Blocked Words:</h3>
-    <div id="wordListContainer"></div>
-    <script src="popup.js"></script>
+    <div class="wordsContainer">
+        <div class="wordsContainerCol">
+            <h3>Blocked Words:</h3>
+            <div id="wordListContainer"></div>
+        </div>
+        <div class="wordContainerCol">
+            <button id="clearbtn">Clear All</button>
+        </div>
+    </div>
 </body>
-
+<script src="popup.js"></script>
 </html>

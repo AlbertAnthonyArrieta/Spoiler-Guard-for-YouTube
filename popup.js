@@ -1,4 +1,7 @@
+document.getElementById("clearbtn").addEventListener("click", clearWords);
 document.getElementById("addbtn").addEventListener("click", addWord);
+
+displayWords();
 
 function addWord() {
     let newWord = document.getElementById("inputWord").value;
@@ -52,7 +55,11 @@ function displayWords() {
     });
 }
 
-// Display the words when the popup is loaded
-displayWords();
+function clearWords() {
+    chrome.storage.local.clear(function() {
+        console.log('Storage cleared');
+        // Update the wordListContainer
+        displayWords();
+    });
+}
 
-//NOTES: delete does not actually delete from storage. It just deletes from the popup.
