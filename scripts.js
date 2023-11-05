@@ -42,10 +42,10 @@ function processHomepage() {
         let newDiv = document.createElement('div');
         newDiv.textContent = 'Spoiler Guard blocked the following word: "' + word + '"';
 
-        newDiv.style.backgroundColor = 'red';
+        newDiv.style.backgroundColor = 'cyan';
         newDiv.style.width = parent.offsetWidth + 'px';
         newDiv.style.height = parent.offsetHeight + 'px';
-        newDiv.style.color = 'white';
+        newDiv.style.color = 'black';
         newDiv.style.fontSize = '20px';
         newDiv.style.borderRadius = '5px';
         newDiv.style.margin = '2px';

@@ -55,8 +55,12 @@ function displayWords() {
 }
 
 function clearWords() {
-    chrome.storage.local.clear(function () {
+    chrome.storage.local.clear(function() {
         console.log('Storage cleared');
+        // Clear the wordListContainer
+        let wordListContainer = document.getElementById("wordListContainer");
+        wordListContainer.innerHTML = '';
+        // Display the words
         displayWords();
     });
 }

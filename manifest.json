@@ -4,11 +4,7 @@
     "description": "A simple spoiler blocker for YouTube.",
     "version": "1.0",
     "icons": {
-        "16": "icons/xxs.png",
-        "19": "icons/xs.png",
-        "38": "icons/small.png",
-        "48": "icons/med.png",
-        "128": "icons/lg.png"
+        "16": "images/sglogo.png"
     },
     "permissions": ["storage"],
     "content_scripts": [
