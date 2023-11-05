@@ -21,6 +21,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 let observer = new MutationObserver(function (mutations) {
   processHomepage();
   processSearchPage();
+  processVideoPage();
 });
 
 function processHomepage() {
@@ -68,6 +69,37 @@ function processSearchPage() {
       // Check if the title includes the word
       if (regex.test(title.textContent)) {
         let parent = title.closest('ytd-video-renderer');
+
+        let newDiv = document.createElement('div');
+        newDiv.textContent = 'Spoiler Guard blocked the following word: "' + word + '"';
+
+        newDiv.style.backgroundColor = 'red';
+        newDiv.style.width = parent.offsetWidth + 'px';
+        newDiv.style.height = parent.offsetHeight + 'px';
+        newDiv.style.color = 'white';
+        newDiv.style.fontSize = '20px';
+        newDiv.style.borderRadius = '5px';
+        newDiv.style.margin = '2px';
+        newDiv.style.padding = '5px';
+
+        parent.parentNode.replaceChild(newDiv, parent);
+      }
+    });
+  });
+}
+
+function processVideoPage() {
+  let title = document.querySelectorAll('ytd-compact-video-renderer #video-title');
+
+  title.forEach(function (title) {
+    // Loop through each word
+    words.forEach(function (word) {
+      // Create a regular expression to match the word case-insensitively. This allows us to match the word regardless of case.
+      let regex = new RegExp(`\\b${word}\\b`, 'i');
+
+      // Check if the title includes the word
+      if (regex.test(title.textContent)) {
+        let parent = title.closest('ytd-compact-video-renderer');
 
         let newDiv = document.createElement('div');
         newDiv.textContent = 'Spoiler Guard blocked the following word: "' + word + '"';
