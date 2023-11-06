@@ -34,11 +34,12 @@ function displayWords() {
             result.words.forEach(function (word, index) {
                 let wordDiv = document.createElement('div');
                 let wordSpan = document.createElement('span');
-                wordSpan.textContent = word;
+                wordSpan.textContent = " " + word;
 
                 // Delete button and functions
                 let deleteButton = document.createElement('button');
-                deleteButton.textContent = ' X  ';
+                deleteButton.style.marginTop = '5px';
+                deleteButton.textContent = 'X';
                 deleteButton.addEventListener('click', function () {
                     result.words.splice(index, 1);
                     chrome.storage.local.set({ words: result.words }, function () {

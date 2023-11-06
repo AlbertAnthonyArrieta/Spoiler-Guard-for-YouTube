@@ -42,10 +42,11 @@ function processHomepage() {
         let newDiv = document.createElement('div');
         newDiv.textContent = 'Spoiler Guard blocked the following word: "' + word + '"';
 
-        newDiv.style.backgroundColor = 'cyan';
+        newDiv.style.backgroundColor = '#141414';
+        newDiv.style.border = '2px solid #0fffe3';
+        newDiv.style.color = '#0fffe3';
         newDiv.style.width = parent.offsetWidth + 'px';
         newDiv.style.height = parent.offsetHeight + 'px';
-        newDiv.style.color = 'black';
         newDiv.style.fontSize = '20px';
         newDiv.style.borderRadius = '5px';
         newDiv.style.margin = '2px';
@@ -73,10 +74,10 @@ function processSearchPage() {
         let newDiv = document.createElement('div');
         newDiv.textContent = 'Spoiler Guard blocked the following word: "' + word + '"';
 
-        newDiv.style.backgroundColor = 'red';
+        newDiv.style.backgroundColor = '#0fffe3';
+        newDiv.style.color = 'black';
         newDiv.style.width = parent.offsetWidth + 'px';
         newDiv.style.height = parent.offsetHeight + 'px';
-        newDiv.style.color = 'white';
         newDiv.style.fontSize = '20px';
         newDiv.style.borderRadius = '5px';
         newDiv.style.margin = '2px';
@@ -104,10 +105,10 @@ function processVideoPage() {
         let newDiv = document.createElement('div');
         newDiv.textContent = 'Spoiler Guard blocked the following word: "' + word + '"';
 
-        newDiv.style.backgroundColor = 'red';
+        newDiv.style.backgroundColor = '#0fffe3';
+        newDiv.style.color = 'black';
         newDiv.style.width = parent.offsetWidth + 'px';
         newDiv.style.height = parent.offsetHeight + 'px';
-        newDiv.style.color = 'white';
         newDiv.style.fontSize = '20px';
         newDiv.style.borderRadius = '5px';
         newDiv.style.margin = '2px';
