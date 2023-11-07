@@ -31,7 +31,8 @@ function displayWords() {
             // Clear the wordListContainer
             wordListContainer.innerHTML = '';
             // Create a new div for each word
-            result.words.forEach(function (word, index) {
+            for (let index = result.words.length - 1; index >= 0; index--) {
+                let word = result.words[index];
                 let wordDiv = document.createElement('div');
                 let wordSpan = document.createElement('span');
                 wordSpan.textContent = " " + word;
@@ -50,7 +51,7 @@ function displayWords() {
                 wordDiv.appendChild(deleteButton);
                 wordDiv.appendChild(wordSpan);
                 wordListContainer.appendChild(wordDiv);
-            });
+            }
         }
     });
 }
